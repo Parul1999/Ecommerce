@@ -1,0 +1,25 @@
+.wishlisted-container {
+    background: var(--secondary-color);
+  }
+  .wishlisted-container > h1 {
+    text-align: center;
+    padding-top: 2rem;
+  }
+  .wishlist-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+  .basic-card{
+      border:none;
+      box-shadow: var(--black-color) 1px 1px 10px;
+  }
+  .card-img {
+      height: 40vh;
+  }
+  .amount-container>h3{
+      font-size:1.4rem
+  }
+  .amount-container>h4{
+      font-size:1.2rem
+  }
