@@ -81,7 +81,3 @@
     gap: 1rem;
     margin-bottom: 0.1px;
 }
-input[type='radio']:checked:after,input[type="radio" i] {
-    background-color: red;
-    border: 2px solid white;
-}
