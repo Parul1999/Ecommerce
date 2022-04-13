@@ -1,0 +1,49 @@
+.mobile-view{
+    display: none;
+}
+@media(max-width:1356px)
+{
+    .desktop-nav-list,.dsk-sidebar-wrap{
+        display: none;
+    }
+    .mobile-view{
+        display: block;
+    }
+    .dsk-sidebar-wrap{
+        display: none;
+    }
+}
+.basic-card{
+    border:none;
+    box-shadow: var(--black-color) 0px 1px 3px;
+}
+.basic-card>div>header>p{
+    font-size:0.7rem;
+    color: var(--dark-color);
+}
+.card-col{
+    width: 17rem;
+    height: fit-content;
+}
+.card-img {
+    height: 25vh;
+}
+.btn{
+    font-size: 1rem;
+}
+.sidebar-product-container{
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+.content-wrapper{
+    display: flex;
+    flex-wrap: wrap;  
+    gap: 0.9rem;
+    width: 100%;
+}
+
+.card-col:hover{
+    box-shadow: var(--black-color) 4px 7px 9px;
+    cursor: pointer;
+}

@@ -1,0 +1,47 @@
+.content{
+    align-items: center;
+    background-image:url("https://res.cloudinary.com/dyflmd7n7/image/upload/v1649643708/ecom/home_c7bvkx.jpg") ;
+    background-size: cover;
+    display: flex;
+    gap: 2rem;
+    height: 85vh;
+    justify-content: center;
+}
+
+.shop-btn{
+    background-image: var(--secondary-color);
+    color: black;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 1rem;
+}
+.shop-btn>a{
+    color: black;
+    text-decoration: none;
+}
+
+.shop-btn:hover{
+    font-size: x-large;
+    box-shadow: #fff 2px 4px 10px;
+}
+.subscribe-wrap{
+    align-items: center;
+  background: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  padding: 3rem;
+}
+.subscribe-inp{
+    position: relative;
+    width: 50%;
+}
+.subscribe-btn{
+    background-color: black;
+    color:white;
+    text-transform: uppercase;
+}
+.input{
+    max-width: 100%;
+}
