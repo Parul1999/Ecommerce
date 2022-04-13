@@ -91,7 +91,3 @@
     gap: 1rem;
     margin-bottom: 0.1px;
 }
-input::placeholder {
-    color: var(--black-color);
-  }
-  
