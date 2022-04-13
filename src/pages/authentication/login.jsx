@@ -1,6 +1,43 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 import '../authentication/authentication.css'
+import axios from 'axios'
+import { useAuth } from '../../context/auth-context'
+
 export default function Login(){
+
+  const [userData,setUserData]=useState({email:"",password:""})
+  const updateUserData=(e)=>{
+   setUserData(userData=>({
+     ...userData,
+     [e.target.name]:e.target.value,
+   }))
+ 
+  }
+  const { auth, setAuth } = useAuth();
+  const navigate = useNavigate();
+  //once the login is done , do navigation
+  const location = useLocation();
+
+  const handleLogin= async ()=>{
+    try{
+       const response = await axios.post('/api/auth/login', userData)
+       if(response.status===200){
+        setAuth((auth) => !auth);
+         // saving the encodedToken in the localStorage
+        localStorage.setItem("token", response.data.encodedToken);
+        //checking location.state != null , because when it throws undefined
+        // it does not redirect to 404 page
+        navigate(location.state != null && location?.state?.from?.pathname, {
+          replace: true
+        });
+       }
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
+ 
     return(
    <>
 
@@ -20,13 +57,13 @@ export default function Login(){
       </p>
 
       <div className="field">
-        <input className="input" type="email" name="email" id="email" placeholder="sharky@example.com" autoComplete="off" />
+        <input className="input" type="email" name="email" id="email" placeholder="sharky@example.com" autoComplete="off" onChange={updateUserData} />
         <label className="label" htmlFor="email">Email</label>
       </div>
 
       <div className="field">
         <input className="input passwords" type="password" name="password" id="password" placeholder="*"
-          autoComplete="off" />
+          autoComplete="off" onChange={updateUserData} />
         <label className="label" htmlFor="password">Password</label>
       </div>
 
@@ -41,7 +78,7 @@ export default function Login(){
         </label>
         <p className="forgot-pswd"><NavLink to="/forgotpassword" id="forgetpswd-click" className="anchor-link">forgot password?</NavLink></p>
 
-      <button className="btn btn-primary btn-log-sign ">Login</button>
+      <button className="btn btn-primary btn-log-sign" onClick={handleLogin}>Login</button>
     </div>
   </div>
   </div>

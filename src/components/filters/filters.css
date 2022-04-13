@@ -1,9 +1,12 @@
     
-#searchBar{
+.searchBar{
     border-radius: 5px;
     margin-bottom: 10%;
     padding: 0.4rem;
     width: 100%;
+}
+.mobileSearch{
+    margin: 0;
 }
 .sidebar-wrapper{
     background-color: var(--white-color);
@@ -17,19 +20,9 @@
     position: sticky;
     top: 0;
     width: 20rem;
+    min-width: max-content;
 }
-@media(min-width:2068px)
-{
-    .sidebar-wrapper{
-        width: 25rem;
-    }
-}
-@media(min-width:2236px)
-{
-    .sidebar-wrapper{
-        width: 30rem;
-    }
-}
+
 .sidebar-ul{
     display: flex;
     flex-direction: column;
@@ -38,6 +31,7 @@
 .filters-wrap{
     display: flex;
     justify-content: space-between;
+    margin-right: 2rem;
 }
 .list-wrap{
     display: flex;
@@ -46,31 +40,16 @@
 }
 
 /* Mobile-Version Styling */
-.filters-wrap-mobile{
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    justify-content:center ;
-}
 
 .overlay {
     background-color: var(--white-color);
     color:var(--black-color);
-    left: 0;
+    display: none;
     overflow-x: hidden;
+    overflow-y: auto;
     position: fixed;
-    visibility: hidden;
-    top: 0;
-    transition: 0.3s ease-out;
-    width: 0;
+    width:  100%;
     z-index: 1;
-  }
-  
-  .overlay-content {
-    position: relative;
-    padding-top: 3rem;
-    text-align: center;
-    width: 100%;
   }
   
   .overlay .closebtn {
@@ -78,9 +57,11 @@
     top: 20px;
     right: 45px;
   }
-  .all-filters-wrap>h1{
-    margin-bottom: 0.8rem;
-  }
+@media (max-width: 700px){
+    .overlay{
+    display: block;
+    }
+}
   
   @media (max-height: 450px) {
     .overlay .closebtn {
@@ -88,16 +69,3 @@
     right: 35px;
     }
 }
-    @media (max-width: 654px) {
-    .all-filters-wrap{
-        display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    }
-    .overlay-content{
-        text-align: inherit;
-    }
-    .filters-wrap-mobile{
-        justify-content: flex-start;
-    }
-    }

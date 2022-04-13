@@ -14,13 +14,17 @@
   ul{
       text-decoration: none;
   }
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
   
   .check-box,.radio-btn{
       height: 1.2rem;
       width: 1.4rem;
       vertical-align: bottom;
   }
-  .hamburger{
+  .hamburger,.cursorClick{
       cursor: pointer;
   }
   .btn-primary{
@@ -34,6 +38,12 @@
       height: 2px;
       margin:1px 1px 1px 0;
   }
+  .vert-line-thin{
+    background-color:var(--grey-color);
+    height: 30px;
+    width: 4px;
+    margin:1px 1px 1px 0;
+}
   .horiz-line-bold{
       background-color:var(--grey-color);
       border:2px solid var(--grey-color);
@@ -81,3 +91,7 @@
     gap: 1rem;
     margin-bottom: 0.1px;
 }
+input::placeholder {
+    color: var(--black-color);
+  }
+  
