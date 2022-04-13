@@ -1,12 +1,11 @@
 import { Link ,NavLink} from 'react-router-dom'
 import '../navbar/navbar.css'
-import HandleModalDisplay  from '../utils/utils';
+
 export default function Navbar(){
-     const {filterOpen,handleFilter} =HandleModalDisplay();
     return(
         <nav className="desktop-nav navbar sticky">
         <div className="nav-headings">
-        <h1> <Link to="/">Sharky Store</Link></h1>
+        <h3> <Link to="/">Sharky Store</Link></h3>
         </div>
        
         <ul className="desktop-nav-list">
@@ -30,11 +29,6 @@ export default function Navbar(){
               <span className="material-icons-outlined" > shopping_cart </span></NavLink>
           </li>
         </ul>
-        <ul className="mobile-view hamburger">
-                <span className="material-icons-outlined" onClick={()=>{handleFilter(filterOpen)}}>
-                    menu
-                </span>
-            </ul>
       </nav>
     )
 }

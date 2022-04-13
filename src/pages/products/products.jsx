@@ -1,25 +1,27 @@
 import './products.css'
-import MobileFilter from "../../components/filters/mobilefilter";
 import DesktopFilter from "../../components/filters/desktopfilter";
-import ProductCard from '../../components/card/productCart';
-import HandleModalDisplay from '../../components/utils/utils';
+import ProductList from '../../components/productList/productList';
+import MobileFilter from '../../components/filters/mobilefilter'
+import { useState } from 'react';
 
 
 export default function Products(){
-    const {filterOpen} =HandleModalDisplay()
+    //to handle filter module when clicked on Sort & Filter
+    const [openFilter,setOpenFilter] = useState(false)
     return(
         <>
         <div className="sidebar-product-container">
-        {filterOpen&& <MobileFilter/>}
          <DesktopFilter/>
-            <main className="content-wrapper">
-              
-             <ProductCard/>
-
-            </main>
-
+         {openFilter && <MobileFilter {...{setOpenFilter}}/>}
+         <ProductList/>
         </div>
-
+        <div className='mobile-prod-filter'>
+            <section>
+                    <input name="prod" type="search"  className="searchBar mobileSearch" autoComplete="off" placeholder='Search Products'/>
+                    </section>
+                    <div className='vert-line-thin'></div>
+                    <section className='cursorClick' onClick={()=>{setOpenFilter(true)}}>Sort & Filter</section>
+       </div>
         </>
     )
 }

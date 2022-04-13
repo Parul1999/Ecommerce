@@ -21,8 +21,8 @@
 }
 
 .shop-btn:hover{
-    font-size: x-large;
-    box-shadow: #fff 2px 4px 10px;
+    font-size: large;
+    box-shadow: #fff 2px 0px 10px;
 }
 .subscribe-wrap{
     align-items: center;
