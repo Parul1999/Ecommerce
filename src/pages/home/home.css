@@ -11,9 +11,11 @@
 .shop-btn{
     background-image: var(--secondary-color);
     color: black;
+    border-radius: 50%;
+    font-weight: bolder;
     border-top-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    padding: 1rem;
+    padding: 3rem;
 }
 .shop-btn>a{
     color: black;
