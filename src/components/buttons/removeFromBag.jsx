@@ -2,7 +2,7 @@ import { useAuth } from "../../context/auth-context";
 import { useCart } from "../../context/cartmanagement-context";
 import { HandleRemoveFromBag } from "./api";
 
-export default function RemoveFromBag({_id}){
+export default function RemoveFromBag({prodDetails}){
     const {auth} = useAuth()
     const {state,dispatch } = useCart();
     return(<>
@@ -11,7 +11,7 @@ export default function RemoveFromBag({_id}){
               onClick={(e) => {
                 // to prevent the link to redirect
                 e.preventDefault();
-                HandleRemoveFromBag(_id,auth,dispatch);
+                HandleRemoveFromBag(prodDetails,auth,dispatch);
               }}
             >
               Remove from Bag

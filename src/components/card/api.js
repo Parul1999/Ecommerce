@@ -1,16 +1,14 @@
 import axios from "axios";
 
-const HandleDetailsChange= async (productId,dispatch,auth,size,qty=1)=>{
+const HandleDetailsChange= async (productId,dispatch,auth,qty,size)=>{
     try {
-        debugger
         const response = await axios.post(
           `/api/user/cart/${productId}`,
           {qty,size},
           { headers: { authorization: auth } }
         );
         if (response.status === 201) {
-            debugger
-          dispatch({ type: "CHANGE_DETAILS", payload: response.data.cart[0] });
+          dispatch({ type: "CHANGE_DETAILS", payload: response.data.cart });
           return response;
         }
       } catch (error) {

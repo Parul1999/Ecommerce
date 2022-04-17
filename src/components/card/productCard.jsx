@@ -21,7 +21,7 @@ export default function ProductCard({ prodDetails }) {
                     </header>
                 </div>
                 <footer className="card-footer">
-                   <AddToWishlist {...{prodDetails}}/>
+                   <AddToWishlist {...{prodDetails}} key={_id}/>
                 </footer>
             </div>
         </NavLink>

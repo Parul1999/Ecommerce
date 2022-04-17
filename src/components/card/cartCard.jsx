@@ -42,7 +42,7 @@ export default function CartCard({ prodDetails }) {
             </select>
             <label htmlFor="size">Size:</label>
 
-            <select name="size" id="size" onChange={(e) => {
+            <select name="size" id="size"  value= {size.toLocaleLowerCase()} onChange={(e) => {
               HandleDetailsChange(
                 _id,
                 dispatch,
@@ -57,7 +57,7 @@ export default function CartCard({ prodDetails }) {
                     <option
                       title={desc}
                       value={meas.toLocaleLowerCase()}
-                      selected= {meas==size?true:false}
+
                     >
                     {meas}
                     </option>
@@ -70,7 +70,7 @@ export default function CartCard({ prodDetails }) {
 
       <footer className="card-footer">
         <MoveToWishlist {...{ prodDetails }} />
-        <RemoveFromBag {...{ _id }} />
+        <RemoveFromBag {...{ prodDetails }} />
       </footer>
     </div>
   );

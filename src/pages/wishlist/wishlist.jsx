@@ -3,6 +3,7 @@ import { useCart } from "../../context/cartmanagement-context";
 import "../wishlist/wishlist.css";
 export default function Wishlist() {
   const { state} = useCart();
+
   return (
     <div className="wishlisted-container">
       <h1>My Wishlist</h1>

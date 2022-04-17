@@ -35,7 +35,7 @@ export default function AddToBag({ prodDetails, size, setError }) {
       let response = null;
       if (ifProdOfSameSizePresent) {
           response = await HandleDetailsChange(
-            prodDetails._id, dispatch, auth, size, prodDetails.qty + 1
+            prodDetails._id, dispatch, auth, prodDetails.qty + 1,size
           )
       }
       else {

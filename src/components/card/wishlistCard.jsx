@@ -14,7 +14,7 @@ export default function WishlistCard({prodDetails}){
         </div>
         <footer className="card-footer">
        <MoveToBag {...{prodDetails}} />
-       <RemoveFromWishlist {...{_id}} />
+       <RemoveFromWishlist {...{prodDetails}} />
         </footer>
     </div>
 

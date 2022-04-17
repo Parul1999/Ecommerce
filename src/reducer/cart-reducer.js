@@ -68,11 +68,7 @@ const handleCart = (state, action) => {
       return {
         ...state,
         cart: {
-          itemsInCart: state.cart.itemsInCart.map((item) =>
-            item._id === action.payload._id
-              ? { ...item, qty: action.payload.qty, size: action.payload.size }
-              : item
-          ),
+          itemsInCart:action.payload
         },
       };
     }

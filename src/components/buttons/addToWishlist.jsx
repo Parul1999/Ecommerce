@@ -1,16 +1,14 @@
 // On Adding To Wishlist , the item is not removed from Bag 
 // Wishlist Button changed to Wishisted.
-import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
 import { useCart } from "../../context/cartmanagement-context";
 import { HandleAddToWishlist } from "./api";
 
 export default function AddToWishlist({prodDetails})
 {
-
-   const {auth} = useAuth()
+    const {auth} = useAuth()
     const {state,dispatch } = useCart();
-    const isProductInWishlist = state.wishlist.itemsInWishlist.some((element) => {
+    const isProductInWishlist = state.wishlist.itemsInWishlist.some((element,index) => {
         return element._id === prodDetails._id;
       });
 

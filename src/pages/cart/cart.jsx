@@ -3,7 +3,7 @@ import { useCart } from "../../context/cartmanagement-context";
 import "../cart/cart.css";
 export default function Cart() {
   const { state, dispatch } = useCart();
-  console.log(state.cart.itemsInCart)
+  
   return (
     <>
       <h1 className="mycart">My Cart</h1>
@@ -13,7 +13,7 @@ export default function Cart() {
 
         {/* <!-- Cart Container --> */}
         <div className="items-container">
-          { state.cart.itemsInCart.map((prodDetails)=><CartCard {...{prodDetails}} />)}
+          { state.cart.itemsInCart.map((prodDetails)=><CartCard {...{prodDetails}} key={prodDetails._id} />)}
         </div>
 
         {/* <!-- Total Price --> */}

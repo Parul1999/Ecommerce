@@ -47,13 +47,24 @@ export const addItemToWishlistHandler = function (schema, request) {
     }
     const userWishlist = schema.users.findBy({ _id: userId }).wishlist;
     const { product } = JSON.parse(request.requestBody);
+
+    const isPresent =  userWishlist.some((el)=> {
+        return el._id === product._id;
+      }); 
+    
+    if(!isPresent){
     userWishlist.push({
       ...product,
       createdAt: formatDate(),
       updatedAt: formatDate(),
     });
+
     this.db.users.update({ _id: userId }, { wishlist: userWishlist });
     return new Response(201, {}, { wishlist: userWishlist });
+  }
+  return new Response(409, {}, {
+     errors: ["The item already exists in Wishlist!!"],
+  });
   } catch (error) {
     return new Response(
       500,

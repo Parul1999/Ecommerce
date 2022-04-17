@@ -8,8 +8,7 @@ const HandleAddToBag = async (product, auth, dispatch) => {
       { headers: { authorization: auth } }
     );
     if (response.status === 201) {
-      debugger
-      dispatch({ type: "ADD_TO_CART", payload: response.data.cart[0] });
+      dispatch({ type: "ADD_TO_CART", payload: product });
       return response;
     }
   } catch (error) {
@@ -17,15 +16,15 @@ const HandleAddToBag = async (product, auth, dispatch) => {
   }
 };
 
-const HandleRemoveFromWishlist = async (_id, auth, dispatch) => {
+const HandleRemoveFromWishlist = async (product, auth, dispatch) => {
   try {
-    const response = await axios.delete(`/api/user/wishlist/${_id}`, {
+    const response = await axios.delete(`/api/user/wishlist/${product._id}`, {
       headers: { authorization: auth },
     });
     if (response.status === 200) {
       dispatch({
         type: "REMOVE_FROM_WISHLIST",
-        payload: response.data.wishlist[0],
+        payload: product,
       });
     }
   } catch (error) {
@@ -36,7 +35,7 @@ const HandleRemoveFromWishlist = async (_id, auth, dispatch) => {
 const HandleMoveToBag = async (product, auth, dispatch) => {
   const response = await HandleAddToBag(product, auth, dispatch);
   if (response?.status === 201) {
-    await HandleRemoveFromWishlist(product._id,auth,dispatch);
+    await HandleRemoveFromWishlist(product,auth,dispatch);
   }
 };
 const HandleAddToWishlist = async (product, auth, dispatch) => {
@@ -47,7 +46,7 @@ const HandleAddToWishlist = async (product, auth, dispatch) => {
       { headers: { authorization: auth } }
     );
     if (response.status === 201) {
-      dispatch({ type: "ADD_TO_WISHLIST", payload: response.data.wishlist[0] });
+      dispatch({ type: "ADD_TO_WISHLIST", payload: product });
       return response;
     }
   } catch (error) {
@@ -55,13 +54,13 @@ const HandleAddToWishlist = async (product, auth, dispatch) => {
   }
 };
 
-const HandleRemoveFromBag = async (_id, auth, dispatch) => {
+const HandleRemoveFromBag = async (product, auth, dispatch) => {
   try {
-    const response = await axios.delete(`/api/user/cart/${_id}`, {
+    const response = await axios.delete(`/api/user/cart/${product._id}`, {
       headers: { authorization: auth },
     });
     if (response.status === 200) {
-      dispatch({ type: "REMOVE_FROM_CART", payload: response.data.cart[0] });
+      dispatch({ type: "REMOVE_FROM_CART", payload: product });
     }
   } catch (error) {
     console.log(error);
@@ -71,7 +70,7 @@ const HandleMoveToWishlist = async (product, auth, dispatch) => {
     try{
    const response= await HandleAddToWishlist(product, auth, dispatch);
      if(response?.status === 201)
-     HandleRemoveFromBag(product._id,auth,dispatch);
+     HandleRemoveFromBag(product,auth,dispatch);
     }
     catch(error)
     {
