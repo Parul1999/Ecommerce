@@ -14,7 +14,8 @@ export const products = [
     originalPrice:"600",
     discount:"300",
     rating:"3.0",
-    size:""
+    size:"",
+    qty:1
   },{
     _id: "2",
     imgUrl:'https://res.cloudinary.com/dyflmd7n7/image/upload/v1649781389/ecom/images_jaep7k.jpg',
@@ -25,7 +26,8 @@ export const products = [
     originalPrice:"600",
     discount:"300",
     rating:"4.0",
-    size:""
+    size:"",
+    qty:1
   }
   ,{
     _id: "3",
@@ -63,7 +65,8 @@ export const products = [
     originalPrice:"600",
     discount:"300",
     rating:"3.0",
-    size:""
+    size:"",
+    qty:1
   }  ,{
     _id: "6",
     imgUrl:'https://res.cloudinary.com/dyflmd7n7/image/upload/v1649781296/ecom/images_kkmkuu.jpg',
@@ -74,7 +77,8 @@ export const products = [
     originalPrice:"600",
     discount:"300",
     rating:"3.0",
-    size:""
+    size:"",
+    qty:1
   }  ,{
     _id: "7",
     imgUrl:'https://res.cloudinary.com/dyflmd7n7/image/upload/v1649781282/ecom/download_f5dbzi.jpg',
@@ -85,7 +89,8 @@ export const products = [
     originalPrice:"600",
     discount:"300",
     rating:"3.0",
-    size:""
+    size:"",
+    qty:1
   }  ,{
     _id: "8",
     imgUrl:'https://res.cloudinary.com/dyflmd7n7/image/upload/v1649781260/ecom/download_r6uit9.jpg',
@@ -96,7 +101,8 @@ export const products = [
     originalPrice:"600",
     discount:"300",
     rating:"3.0",
-    size:""
+    size:"",
+    qty:1
   }  ,{
     _id: "9",
     imgUrl:'https://res.cloudinary.com/dyflmd7n7/image/upload/v1649781243/ecom/download_hxmybc.jpg',
@@ -107,6 +113,7 @@ export const products = [
     originalPrice:"600",
     discount:"300",
     rating:"3.0",
-    size:""
+    size:"",
+    qty:1
   }
 ];
