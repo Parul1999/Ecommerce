@@ -1,7 +1,8 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import '../authentication/authentication.css'
 import axios from 'axios'
+import { useAuth } from '../../context/auth-context'
 export default function SignUp(){
   const [userData,setUserData]=useState({firstName: "",lastName:"",email:"",password:""})
   const updateUserData=(e)=>{
@@ -10,10 +11,30 @@ export default function SignUp(){
      [e.target.name]:e.target.value,
    }))
   }
+  const {  setAuth } = useAuth();
+  const navigate = useNavigate();
+  //once the login is done , do navigation
+  const location = useLocation();
   
   const handleSignUp=async ()=>{
     try{
-       const response = await axios.post(`/api/auth/signup`,userData)
+       const response = await axios.post(`/api/auth/signup`,userData);
+       if (response.status === 200) {
+        setAuth(response.data.encodedToken);
+        localStorage.setItem("token", response.data.encodedToken);
+        //checking location.state != null , because when it throws undefined
+        // it does not redirect to 404 page
+        if (location.state != null) {
+          navigate(location?.state?.from?.pathname, {
+            replace: true,
+          });
+        } else {
+          //If the page was refreshed , i.e no initial location then move to home page
+          navigate("/", {
+            replace: true,
+          });
+        }
+      }
     }
     catch(err){
        console.log(err)
@@ -26,7 +47,7 @@ export default function SignUp(){
     <div className="form-left">
       <h1>Hi!!</h1>
       <p>
-        Welcome to your own Sharky Store !! Hope you love our products. Keep
+        Welcome to your own अपनाstore !! Hope you love our products. Keep
         Shopping !!
       </p>
     </div>
@@ -36,17 +57,17 @@ export default function SignUp(){
       <p>Already have an account? <NavLink to="/login">Login to your account</NavLink></p>
 
       <div className="field">
-        <input className="input" type="text" name="firstName" id="firstName" placeholder="sharkyui" autoComplete="off" onChange={updateUserData}/>
+        <input className="input" type="text" name="firstName" id="firstName" placeholder="अपनाui" autoComplete="off" onChange={updateUserData}/>
         <label className="label" htmlFor="firstName">First Name</label>
       </div>
 
       <div className="field">
-        <input className="input" type="text" name="lastName" id="lastName" placeholder="sharkyui" autoComplete="off" onChange={updateUserData}/>
+        <input className="input" type="text" name="lastName" id="lastName" placeholder="अपनाui" autoComplete="off" onChange={updateUserData}/>
         <label className="label" htmlFor="lastName">Last Name</label>
       </div>
 
       <div className="field">
-        <input className="input" type="email" name="email" id="email" placeholder="sharky@example.com" autoComplete="off" onChange={updateUserData}/>
+        <input className="input" type="email" name="email" id="email" placeholder="अपनाstore@example.com" autoComplete="off" onChange={updateUserData}/>
         <label className="label" htmlFor="email">Email</label>
       </div>
 

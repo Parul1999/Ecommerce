@@ -1,0 +1,8 @@
+.img-not-found-container{
+    background-color: var(--white-color);
+}
+.not-found-img
+{
+    height: 30rem;
+    object-fit: contain;
+}

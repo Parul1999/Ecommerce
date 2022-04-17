@@ -118,24 +118,18 @@ export const updateCartItemHandler = function (schema, request) {
       );
     }
     const userCart = schema.users.findBy({ _id: userId }).cart;
-    const { action } = JSON.parse(request.requestBody);
-    if (action.type === "increment") {
+    const { qty,size } = JSON.parse(request.requestBody);
+
       userCart.forEach((product) => {
         if (product._id === productId) {
-          product.qty += 1;
+          product.qty = qty;
+          product.size = size;
           product.updatedAt = formatDate();
         }
       });
-    } else if (action.type === "decrement") {
-      userCart.forEach((product) => {
-        if (product._id === productId) {
-          product.qty -= 1;
-          product.updatedAt = formatDate();
-        }
-      });
-    }
+    
     this.db.users.update({ _id: userId }, { cart: userCart });
-    return new Response(200, {}, { cart: userCart });
+    return new Response(201, {}, { cart: userCart });
   } catch (error) {
     return new Response(
       500,

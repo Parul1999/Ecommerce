@@ -1,16 +1,20 @@
-export default function WishlistCard(){
+import MoveToBag from "../buttons/moveToBag";
+import RemoveFromWishlist from "../buttons/removeFromWishlist";
+
+export default function WishlistCard({prodDetails}){
+    const { imgUrl, productName, price,_id} = prodDetails;
     return(
         <div className="card-col basic-card">
         <div>
-            <img className="card-img basic-img" src="https://res.cloudinary.com/dyflmd7n7/image/upload/v1649643694/ecom/card_znmulq.jpg" alt="card" />
+            <img className="card-img basic-img" src={imgUrl} alt={productName} />
             <header>
-                <h4>Rs. 1000</h4>
-                <p>by SharkyStore</p>
+            <h3>{productName}</h3>
+        <h5>Rs.{price}</h5>
             </header>
         </div>
         <footer className="card-footer">
-            <button className="btn btn-primary">Add to Cart</button>
-            <button className="btn btn-secondary">Remove</button>
+       <MoveToBag {...{prodDetails}} />
+       <RemoveFromWishlist {...{_id}} />
         </footer>
     </div>
 

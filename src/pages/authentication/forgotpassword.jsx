@@ -16,7 +16,7 @@ export default function ForgotPassword(){
       <h1>Forgot Password?</h1>
     
       <div className="field">
-        <input className="input" type="email" name="email" id="email" placeholder="sharky@example.com" autoComplete="off" />
+        <input className="input" type="email" name="email" id="email" placeholder="अपनाstore@example.com" autoComplete="off" />
         <label className="label" htmlFor="email">Email</label>
       </div>
 

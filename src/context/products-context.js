@@ -32,7 +32,6 @@ const ProductProvider = ({ children }) => {
     };
     fetchData();
   }, []);
-
   return (
     <ProductContext.Provider value={{ state, dispatch }}>
       {children}

@@ -95,3 +95,6 @@
     align-self: center;
     padding: 1rem;
 }
+.txt-danger{
+    color:var(--error-color)
+}
