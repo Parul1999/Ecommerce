@@ -1,10 +1,11 @@
 import { Link ,NavLink} from 'react-router-dom'
 import { useAuth } from '../../context/auth-context'
+import { useCart } from '../../context/cartmanagement-context';
 import { handleLogout } from '../../methods/methods'
 import '../navbar/navbar.css'
 
 export default function Navbar(){
-  const {auth} = useAuth()
+  const {auth,setAuth} = useAuth();
     return(
         <nav className="desktop-nav navbar sticky">
         <div className="nav-headings">
@@ -35,7 +36,7 @@ export default function Navbar(){
           </li>
           {
           auth !="" && <li>
-          <NavLink className="desktop-list-item" to="/"  data-title="logout" onClick={()=>{handleLogout()}}>
+          <NavLink className="desktop-list-item" to="/"  data-title="logout" onClick={()=>{handleLogout(setAuth)}}>
               <span className="material-icons-outlined">
                   logout
                   </span>

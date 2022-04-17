@@ -87,7 +87,10 @@ body {
       background: var(--primary-color);
   }
   .btn-log-sign:hover{
-      font-size: x-large;
-      box-shadow: black 2px 4px 10px;
+      font-size: large;
+      box-shadow: black 2px 4px 5px;
   }
- 
+ .display-flex{
+   display: flex;
+   gap:1rem
+ }

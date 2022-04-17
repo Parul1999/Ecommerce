@@ -6,6 +6,7 @@ import { useAuth } from "../../context/auth-context";
 
 export default function Login() {
   const [userData, setUserData] = useState({ email: "", password: "" });
+  const [passwordShow,setPasswordShow] = useState(false)
   const updateUserData = (e) => {
     setUserData((userData) => ({
       ...userData,
@@ -17,9 +18,9 @@ export default function Login() {
   //once the login is done , do navigation
   const location = useLocation();
 
-  const handleLogin = async () => {
+  const handleLogin = async (defaultUser=userData) => {
     try {
-      const response = await axios.post("/api/auth/login", userData);
+      const response = await axios.post("/api/auth/login", defaultUser);
       if (response.status === 200) {
         setAuth(response.data.encodedToken);
         // saving the encodedToken in the localStorage
@@ -78,7 +79,7 @@ export default function Login() {
           <div className="field">
             <input
               className="input passwords"
-              type="password"
+              type={passwordShow ? "text" : "password"} 
               name="password"
               id="password"
               placeholder="*"
@@ -92,18 +93,11 @@ export default function Login() {
 
           <div className="remember-forget-wrap ">
             <label>
-              <input type="checkbox" className="check-box show-pswd" />
+              <input type="checkbox" checked={passwordShow}
+               className="check-box show-pswd" onChange={(e)=>setPasswordShow(!passwordShow)}/>
               <span className="text-checkbox">Show Passwords</span>
             </label>
-            <label>
-              <input
-                type="checkbox"
-                name="item"
-                checked
-                className="check-box"
-              />
-              <span className="text-checkbox">Remember me</span>
-            </label>
+         
             <p className="forgot-pswd">
               <NavLink
                 to="/forgotpassword"
@@ -113,6 +107,19 @@ export default function Login() {
                 forgot password?
               </NavLink>
             </p>
+
+          </div>
+          <div className="display-flex">
+            <button
+              className="btn btn-primary btn-log-sign"
+              onClick={() =>
+                handleLogin({
+                  email: 'guestlogin@gmail.com',
+                  password: 'guestlogin'
+                })}
+            >
+              GuestLogin
+            </button>
 
             <button
               className="btn btn-primary btn-log-sign"

@@ -42,7 +42,8 @@ const FilterProducts = (state, data) => {
     return tempData
   }
 
-  const handleLogout=()=>{
+  const handleLogout=(setAuth)=>{
     localStorage.removeItem("token");
+    setAuth("");
   }
 export {FilterProducts,SortProducts,SearchProducts,handleLogout}

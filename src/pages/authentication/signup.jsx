@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useAuth } from '../../context/auth-context'
 export default function SignUp(){
   const [userData,setUserData]=useState({firstName: "",lastName:"",email:"",password:""})
+  const [passwordShow,setPasswordShow] = useState(false)
   const updateUserData=(e)=>{
    setUserData(userData=>({
      ...userData,
@@ -19,7 +20,7 @@ export default function SignUp(){
   const handleSignUp=async ()=>{
     try{
        const response = await axios.post(`/api/auth/signup`,userData);
-       if (response.status === 200) {
+       if (response.status === 201) {
         setAuth(response.data.encodedToken);
         localStorage.setItem("token", response.data.encodedToken);
         //checking location.state != null , because when it throws undefined
@@ -72,26 +73,24 @@ export default function SignUp(){
       </div>
 
       <div className="field">
-        <input className="input passwords" type="password" name="password" id="password" placeholder="*"
+        <input className="input passwords"  type={passwordShow ? "text" : "password"}  name="password" id="password" placeholder="*"
           autoComplete="off"  onChange={updateUserData}/>
         <label className="label" htmlFor="password">Password</label>
       </div>
 
       <div className="field">
-        <input className="input passwords" type="password" name="confirm-password" id="confirm-password" placeholder="*"
+        <input className="input passwords"  type={passwordShow ? "text" : "password"}  name="confirm-password" id="confirm-password" placeholder="*"
           autoComplete="off" />
         <label className="label" htmlFor="confirm-password">Confirm Password</label>
       </div>
 
       <div className="remember-forget-wrap ">
         <label>
-          <input type="checkbox" className="check-box show-pswd" />
+          <input type="checkbox" className="check-box show-pswd" checked={passwordShow}
+           onChange={(e)=>setPasswordShow(!passwordShow)}/>
           <span className="text-checkbox">Show Passwords</span>
         </label>
-        <label>
-          <input type="checkbox" name="item" checked className="check-box" />
-          <span className="text-checkbox">Remember me</span>
-        </label>
+       
        
       </div>
       <button className="btn btn-primary btn-log-sign" onClick={handleSignUp}>Sign Up</button>
