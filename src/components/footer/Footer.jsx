@@ -10,7 +10,7 @@ export default function Footer(){
             <p>Delivery & Returns</p>
           </div>
           <div>
-            <h1>About Sharky Store</h1>
+            <h1>About अपनाstore</h1>
             <p>About Us</p>
             <p>Contact Us</p>
             <p>Policies</p>
@@ -22,7 +22,7 @@ export default function Footer(){
           </div>
         </div>
         <div className="footer-disc">
-          <p>©2022 SharkyStore</p>
+          <p>©2022 अपनाstore</p>
           <div>
             <h6>Privacy & Cookies</h6>
             <h6>T&Cs</h6>

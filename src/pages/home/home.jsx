@@ -18,7 +18,7 @@ export default function Home() {
       <div className="subscribe-wrap">
         <h2>
           Yes! Send me exclusive offers and personalised tips for shopping and
-          selling on Sharky.
+          selling on अपनाstore.
         </h2>
         <div className="field subscribe-inp">
           <input

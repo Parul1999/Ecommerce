@@ -81,3 +81,16 @@
     margin-top: 10px;
 
 }
+.empty-cart-wrapper{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column-reverse;
+    gap: 2rem;
+    padding: 1rem 0;
+    text-align: center;
+}
+.empty-cart-wrapper>img{
+    width: 20rem;
+    height: 20rem;
+}

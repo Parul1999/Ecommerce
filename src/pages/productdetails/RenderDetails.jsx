@@ -1,8 +1,18 @@
-export default function RenderDetails({ productDetails }) {
-    const { imgUrl, description, discount, originalPrice, productName, price, rating } = productDetails;
+import { useState } from "react";
+import AddToBag from "../../components/buttons/addToBag";
+import AddToWishlist from "../../components/buttons/addToWishlist";
+import { sizeArray } from "../../constants";
+import { useCart } from "../../context/cartmanagement-context";
+
+export default function RenderDetails() {
+    const { state,dispatch } = useCart()
+    const {currentProduct:productDetails} = state;
+    const { imgUrl, description, discount, originalPrice, productName, price, rating, size } = productDetails;
+    const [error, setError] = useState(false);
+
     return (<>
         <main className="product-detail-wrapper">
-            <img src={imgUrl} alt="pink-dress" className="product-img" />
+            <img src={imgUrl} alt={productName} className="product-img" />
             <div className="product-details">
                 <section>
                     <h2>{productName}</h2>
@@ -24,26 +34,28 @@ export default function RenderDetails({ productDetails }) {
                 <section>
                     <h3>SELECT SIZE</h3>
                     <div className="size-wrapper">
-                        <div className="letter-avatar" title="Xtra-Small">
-                            <span className="letter-avatar-text">XS</span>
-                        </div>
-                        <div className="letter-avatar" title="Small">
-                            <span className="letter-avatar-text">S</span>
-                        </div>
-                        <div className="letter-avatar" title="Medium">
-                            <span className="letter-avatar-text">M</span>
-                        </div>
-                        <div className="letter-avatar" title="Large">
-                            <span className="letter-avatar-text">L</span>
-                        </div>
-                        <div className="letter-avatar" title="Xtra-Large">
-                            <span className="letter-avatar-text">XL</span>
-                        </div>
+                        {
+                            sizeArray && sizeArray.map(({ meas, desc }) => {
+                                return (
+                                    <button className={`letter-avatar ${size == meas ? "selected-size" : ""}`} title={desc} value={meas.toLocaleLowerCase()}
+                                        onClick={(e) => {
+                                            dispatch({ type: 'SELECT_SIZE', payload:meas})
+                                            setError(false)
+                                        }}>
+                                        <span className="letter-avatar-text">{meas}</span>
+                                    </button>
+                                )
+                            })}
                     </div>
                 </section>
+                <section>
+                    {error &&
+                        <p className="txt-danger">Please Select A Size</p>
+                    }
+                </section>
                 <section className="card-btns">
-                    <button className="btn btn-primary">Move to Cart</button>
-                    <button className="btn btn-secondary">Move to Wishlist</button>
+                    <AddToBag prodDetails={productDetails} {...{ size, setError }} />
+                    <AddToWishlist prodDetails={productDetails} />
                 </section>
                 <section className="delivery-terms">
                     <small className="grey-txt">100% Original Products</small>

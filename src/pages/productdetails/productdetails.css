@@ -23,6 +23,10 @@
 .letter-avatar:hover{
     box-shadow: var(--dark-color) 2px 3px 1px;
 }
+.selected-size{
+    border-color:var(--dark-color);
+    box-shadow: red 5px 3px 1px;
+}
 .size-wrapper,.product-pricing{
     display: flex;
     gap: 0.5rem;

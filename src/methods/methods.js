@@ -41,4 +41,8 @@ const FilterProducts = (state, data) => {
     }
     return tempData
   }
-export {FilterProducts,SortProducts,SearchProducts}
+
+  const handleLogout=()=>{
+    localStorage.removeItem("token");
+  }
+export {FilterProducts,SortProducts,SearchProducts,handleLogout}
