@@ -1,5 +1,3 @@
-import { v4 as uuid } from "uuid";
-
 /**
  * Product Database can be added here.
  * You can add products of your wish with different attributes
@@ -20,13 +18,13 @@ export const products = [
   },{
     _id: "2",
     imgUrl:'https://res.cloudinary.com/dyflmd7n7/image/upload/v1649781389/ecom/images_jaep7k.jpg',
-    category:'women',
+    category:'men',
     description:"Blue printed dress, with flawless design and colour",
-    productName:'dress',
-    price:"300",
+    productName:'blue dress',
+    price:"400",
     originalPrice:"600",
     discount:"300",
-    rating:"3.0",
+    rating:"4.0",
     quantity:0
   }
   ,{
@@ -34,11 +32,11 @@ export const products = [
     imgUrl:'https://res.cloudinary.com/dyflmd7n7/image/upload/v1649781338/ecom/download_cnlazy.jpg',
     category:'women',
     description:"Blue printed dress, with flawless design and colour",
-    productName:'dress',
-    price:"300",
+    productName:'grey jeans',
+    price:"500",
     originalPrice:"600",
     discount:"300",
-    rating:"3.0",
+    rating:"5.0",
     quantity:0
   }
   ,{
@@ -50,7 +48,7 @@ export const products = [
     price:"300",
     originalPrice:"600",
     discount:"300",
-    rating:"3.0",
+    rating:"2.0",
     quantity:0
   }
   ,{

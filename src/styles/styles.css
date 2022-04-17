@@ -91,3 +91,7 @@
     gap: 1rem;
     margin-bottom: 0.1px;
 }
+.textCenter{
+    align-self: center;
+    padding: 1rem;
+}

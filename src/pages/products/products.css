@@ -29,7 +29,6 @@
 .sidebar-product-container{
     display: flex;
     gap: 1rem;
-    justify-content: space-between;
 }
 .content-wrapper{
     display: flex;
